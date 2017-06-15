@@ -8,6 +8,8 @@ namespace CastleGrimtol.Game
         string Description { get; set; }
         List<Item> Items { get; set; }
 
+        //currentRoom.UseItem
+        //
         void UseItem(Item item);
 
     }
