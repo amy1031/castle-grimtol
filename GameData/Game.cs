@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace CastleGrimtol.Game
+namespace CastleGrimtol.GameData
 {
     public class Game : IGame
     {
@@ -20,6 +20,10 @@ namespace CastleGrimtol.Game
         public void UseItem(string itemName)
         {
 
+        }
+        public Game()
+        {
+            
         }
     }
 }

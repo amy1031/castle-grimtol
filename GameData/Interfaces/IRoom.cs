@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace CastleGrimtol.Game
+namespace CastleGrimtol.GameData
 {
     public interface IRoom
     {

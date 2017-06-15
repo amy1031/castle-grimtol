@@ -1,5 +1,5 @@
 ﻿using System;
-using CastleGrimtol.Game;
+using CastleGrimtol.GameData;
 
 namespace CastleGrimtol
 {
@@ -7,8 +7,9 @@ namespace CastleGrimtol
     {
         public static void Main(string[] args)
         {
-                //game loop here or in Game.cs
-                Console.WriteLine("Hello, World");
+            //game loop here or in Game.cs
+            //Console.WriteLine("Hello, World");
+            var game = new Game();
         }
     }
 }
