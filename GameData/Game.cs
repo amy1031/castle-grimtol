@@ -11,12 +11,10 @@ namespace CastleGrimtol.GameData
 
         public void Setup() 
         {
-            //create all rooms var livingRoom = new Room()
             //relationships/exits from each room - create a dictionary in room with exits
             //create all items here first
             Console.WriteLine("///////////////////////////////////////////////////////////");
             Console.WriteLine("Are you okay? Are you hurt?");
-            //Console.WriteLine("What is your name?");
             CurrentPlayer = new Player();
         }
 
@@ -47,9 +45,15 @@ namespace CastleGrimtol.GameData
         public void Rooms() 
         {
             var shaft = new Room("Shaft", "It looks like you have fallen through a cave shaft and now you are the bottom of a cave. Oh no! It looks like the shaft is about to cave in! You better go north through the tunnel to find another way out!");
-            var caveA = new Room("Cave A", "DOUBLE BLARG");
-            var caveB = new Room("Cave B", "TRIPLE BLARG");
+            var caveA = new Room("Cave A", "It's very dark and muggy in this part of the cave.");
+            var caveB = new Room("Cave B", "There are many large boulders everywhere. There are bats up above.");
+            var caveC = new Room("Cave C", "There is a small pond. The air is starting to seem less muggy.");
             var meadow = new Room("Meadow", "Wow, what a beautiful sight. You see a large empty meadow in front of you, filled with lavendar and oak trees.");
+        }
+        public void Items()
+        {
+            var flashlight = new Item("Flashlight", "Now you can see better.");
+            var axe = new Item("Axe", "Cuts through wood with some extreme effort.");
         }
 
         public void Reset()
@@ -60,10 +64,6 @@ namespace CastleGrimtol.GameData
         public void UseItem(string itemName)
         {
 
-        }
-        public void Start()
-        {
-            //game loop here
         }
     }
 }
