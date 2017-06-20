@@ -10,6 +10,7 @@ namespace CastleGrimtol
             var game = new Game();
             game.Setup();
             game.Rooms();
+            game.Items();
 
             //game loop
             bool playing = true;
@@ -17,6 +18,7 @@ namespace CastleGrimtol
             {
                 var userInput = Console.ReadLine();
                 var userChoice = userInput.Split(' ');
+                
 
                 if (userInput.ToLower() == "quit" || userInput.ToLower() == "q")
                 {

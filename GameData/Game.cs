@@ -11,8 +11,6 @@ namespace CastleGrimtol.GameData
 
         public void Setup() 
         {
-            //relationships/exits from each room - create a dictionary in room with exits
-            //create all items here first
             Console.WriteLine("///////////////////////////////////////////////////////////");
             Console.WriteLine("Are you okay? Are you hurt?");
             CurrentPlayer = new Player();
@@ -50,6 +48,7 @@ namespace CastleGrimtol.GameData
             var caveC = new Room("Cave C", "There is a small pond. The air is starting to seem less muggy.");
             var meadow = new Room("Meadow", "Wow, what a beautiful sight. You see a large empty meadow in front of you, filled with lavendar and oak trees.");
         }
+
         public void Items()
         {
             var flashlight = new Item("Flashlight", "Now you can see better.");
