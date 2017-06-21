@@ -21,7 +21,17 @@ namespace CastleGrimtol.GameData
             string name = Console.ReadLine();
             Console.WriteLine("Hi, " + name + ". Don't be scared. I can help guide you out of this mess.");
             Console.WriteLine("> > > If you need help, type in 'help' or 'h' at any time. < < <");
+            Console.WriteLine("\n");
             return name;
+        }
+
+        public void PlayerInventory(Player player)
+        {
+            Console.WriteLine("The items currently in your inventory: ");
+            foreach(var item in Inventory)
+            {
+                Console.WriteLine(item.Name + " - " + item.Description);
+            }
         }
     }
 }

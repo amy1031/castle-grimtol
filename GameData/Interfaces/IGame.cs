@@ -16,6 +16,5 @@ namespace CastleGrimtol.GameData
         //You can only use an item in the room where you are.
         void UseItem(string itemName);
 
-        //you can add to interface but cannot remove anything from the interfaces
     }
 }
