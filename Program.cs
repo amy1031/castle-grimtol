@@ -15,26 +15,27 @@ namespace CastleGrimtol
             while (game.Playing)
             {
                 Console.Write("\nWhat would you like to do? ");
-                var userInput = Console.ReadLine();
-                var userChoice = userInput.Split(' ');
+                var userInput = Console.ReadLine().Split(' ');
+                var userChoice = userInput[0];
+               // var userParameters = userChoice.Split(' ')[1];
 
-                if (userInput.ToLower() == "quit" || userInput.ToLower() == "q")
+                if (userChoice.ToLower() == "quit" || userChoice.ToLower() == "q")
                 {
                     game.Playing = false;
                 }
-                else if (userInput.ToLower() == "help" || userInput.ToLower() == "h")
+                else if (userChoice.ToLower() == "help" || userChoice.ToLower() == "h")
                 {
                     game.GetHelp();
                 }
-                else if (userInput.ToLower() == "north" || userInput.ToLower() == "n")
+                else if (userChoice.ToLower() == "north" || userChoice.ToLower() == "n")
                 {
                     game.Move("north");
                 }
-                else if (userInput.ToLower() == "south" || userInput.ToLower() == "s")
+                else if (userChoice.ToLower() == "south" || userChoice.ToLower() == "s")
                 {
                     game.Move("south");
                 }
-                else if (userInput.ToLower() == "east" || userInput.ToLower() == "e")
+                else if (userChoice.ToLower() == "east" || userChoice.ToLower() == "e")
                 {
                     Console.BackgroundColor = ConsoleColor.Red;
                     Console.ForegroundColor = ConsoleColor.Black;
@@ -45,7 +46,7 @@ namespace CastleGrimtol
                     Console.WriteLine("Goodbye.");
                     game.Playing = false;
                 }
-                else if (userInput.ToLower() == "west" || userInput.ToLower() == "w")
+                else if (userChoice.ToLower() == "west" || userChoice.ToLower() == "w")
                 {
                     Console.BackgroundColor = ConsoleColor.Red;
                     Console.ForegroundColor = ConsoleColor.Black;
@@ -56,21 +57,25 @@ namespace CastleGrimtol
                     Console.WriteLine("It was nice knowing you.");
                     game.Playing = false;
                 }
-                else if (userInput.ToLower() == "inventory" || userInput.ToLower() == "i")
+                else if (userChoice.ToLower() == "inventory" || userChoice.ToLower() == "i")
                 {
                     game.CurrentPlayer.PlayerInventory(game.CurrentPlayer);
                 }
-                else if (userInput.ToLower() == "take" || userInput.ToLower() == "t")
+                else if (userChoice.ToLower() == "take" || userChoice.ToLower() == "t"  && userInput[1] != null)
                 {
-                    game.TakeItem("item");
+                    game.TakeItem(userInput[1]);
                 }
-                else if (userInput.ToLower() == "reset" || userInput.ToLower() == "r")
+                else if (userChoice.ToLower() == "reset" || userChoice.ToLower() == "r")
                 {
                     game.Reset();
                 }
-                else if (userInput.ToLower() == "use")
+                else if (userChoice.ToLower() == "use"  && userInput[1] != null)
                 {
-                    game.UseItem("item");
+                    game.UseItem(userInput[1]);
+                }
+                else if (userChoice.ToLower() == "go" && userInput[1] != null) 
+                {
+                    game.Move(userInput[1]);
                 }
                 else
                 {

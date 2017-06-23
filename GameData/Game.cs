@@ -52,11 +52,13 @@ namespace CastleGrimtol.GameData
 
         public void Rooms()
         {
-            var shaft = new Room("Shaft", "It looks like you have fallen through a cave shaft and now you are the bottom of a cave. Oh no! It looks like the shaft is about to cave in! You better go north through the tunnel to find another way out!");
-            var caveA = new Room("Cavern", "It's very dark and muggy in this part of the cave. All around you is nothing but limestone.");
-            var caveB = new Room("Talus Cave", "There are large boulders everywhere. They have fallen down in random heaps from above.");
-            var caveC = new Room("Anchialine cave", "There is a small pond. The air is starting to seem less muggy.");
-            var meadow = new Room("Meadow", "Wow, what a beautiful sight. You see a large empty meadow in front of you, filled with lavendar and oak trees. \nYou successfully got out of the cave! \nYou win!");
+            var axeUse = new Dictionary<string, string>();
+            axeUse.Add("axe", "You chop down the wall");
+            var shaft = new Room("Shaft", "It looks like you have fallen through a cave shaft and now you are the bottom of a cave. Oh no! It looks like the shaft is about to cave in! You better go north through the tunnel to find another way out!", false, null);
+            var caveA = new Room("Cavern", "It's very dark and muggy in this part of the cave. All around you is nothing but limestone.", false, null);
+            var caveB = new Room("Talus Cave", "There are large boulders everywhere. They have fallen down in random heaps from above.", true, axeUse);
+            var caveC = new Room("Anchialine cave", "There is a small pond. The air is starting to seem less muggy.", false, null);
+            var meadow = new Room("Meadow", "Wow, what a beautiful sight. You see a large empty meadow in front of you, filled with lavendar and oak trees. \nYou successfully got out of the cave! \nYou win!", false, null);
             Console.BackgroundColor = ConsoleColor.DarkGreen;
             Console.ForegroundColor = ConsoleColor.White;
             CurrentRoom = shaft;
@@ -72,9 +74,9 @@ namespace CastleGrimtol.GameData
             meadow.AddExit(caveC, "south");
 
             //add items
-            var flashlight = new Item("Flashlight", "Now you can see better.");
+            var flashlight = new Item("Flashlight", "Now you can see better.", false);
             caveA.Items.Add(flashlight);
-            var axe = new Item("Axe", "Cuts through wood with some extreme effort.");
+            var axe = new Item("Axe", "Cuts through wood with some extreme effort.", true);
             caveB.Items.Add(axe);
 
             // if (CurrentRoom == caveA)
@@ -113,11 +115,25 @@ namespace CastleGrimtol.GameData
 
         public void TakeItem(string itemName)
         {
-
+            var item = CurrentRoom.Items.Find(x => x.Name.ToLower() == itemName.ToLower());
+            if(item != null)
+            {
+                CurrentPlayer.Inventory.Add(item);
+                CurrentRoom.Items.Remove(item);
+                Console.WriteLine($"You take the {itemName}");
+            }
+            else
+            {
+                Console.WriteLine("You can't take an item more than once");
+            }
         }
         public void UseItem(string itemName)
         {
-
+            var item = CurrentPlayer.Inventory.Find(x => x.Name.ToLower() == itemName.ToLower());
+            if(item != null)
+            {
+                CurrentRoom.UseItem(item);
+            }
         }
 
         public void Reset()
